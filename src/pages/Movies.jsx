@@ -9,6 +9,7 @@ import { Loader2 } from "lucide-react";
 const Movies = () => {
     const def = "alpha"
     const [movies, setMovies] = useState([])
+    const [ratings, setRatings] = useState()
     const [searchTag, setSearchTag] = useState("")
     const [filter, setFilter] = useState()
     const [loading, setLoading] = useState(true)
@@ -26,7 +27,7 @@ const Movies = () => {
     function onSearchKeyPress(key){
         key === "Enter" && onSearch()
     }
-
+    
     async function getMovies(searchTag) {
         const {data: {
             Search
@@ -50,7 +51,7 @@ const Movies = () => {
     }
     useEffect(() => {
         getMovies()
-    },[])
+    },[movies])
     return ( 
         <>
             <section id="Browse">
