@@ -1,5 +1,7 @@
+import { Menu } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
+import BurgerMenu from "../components/BugerMenu";
 
 const Home = () => {
     return ( 
@@ -34,6 +36,7 @@ const Home = () => {
                                 Contact
                             </span>
                         </Link>
+                        <BurgerMenu/>
                     </ul>
                 </nav>
                 <header className="header">

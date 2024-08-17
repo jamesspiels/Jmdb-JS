@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import { Loader2 } from "lucide-react";
+import { Loader2, Menu } from "lucide-react";
+import { IconContext } from "react-icons";
+import BurgerMenu from "../components/BugerMenu";
+import NavBar from "../components/NavBar";
 
 
 const Movies = () => {
@@ -33,7 +36,7 @@ const Movies = () => {
         }} = await axios.get(`https://www.omdbapi.com/?apikey=8df65106&s=${searchTag || def}`)
 
         //Remove last element of array
-        Search.length >= 10 && Search.pop()
+        Search?.length >= 10 && Search.pop()
 
         if(filter){
             if(filter === "OLD__TO__NEW"){
@@ -68,27 +71,9 @@ const Movies = () => {
                     
 
                     <ul className="nav__link--list">
-                        <Link to="/" className="nav__link">
-                            <span 
-                                className="nav__link--anchor link__hover-effect link__hover-effect--black"
-                            >
-                                Home
-                            </span>
-                        </Link>
-                        <Link to="/movies" className="nav__link">
-                            <span 
-                                className="nav__link--anchor nav__link--home link__hover-effect link__hover-effect--purple"
-                            >
-                                Find your movie
-                            </span>
-                        </Link>
-                        <Link to="/" className="nav__link">
-                            <span 
-                                className="nav__link--btn btn"
-                            >
-                                Contact
-                            </span>
-                        </Link>
+                        <NavBar />
+                        <BurgerMenu/>
+
                     </ul>
                 </nav>
                 <div className="header__content">
@@ -107,7 +92,9 @@ const Movies = () => {
                         }}
                     />
                     <button className="btn--search btn" onClick={() => onSearch()}>
-                        <FaMagnifyingGlass  size = {32} className="react__icon"/>
+                        <IconContext.Provider value={{ className: "react__icon"}}>
+                            <FaMagnifyingGlass/>
+                        </IconContext.Provider>
                     </button>
                     </div>
                 </div>

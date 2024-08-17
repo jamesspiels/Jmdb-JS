@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Loader2 } from "lucide-react";
+import { Loader2, Menu } from "lucide-react";
+import BurgerMenu from "../components/BugerMenu";
 
 const Details = () => {
     const {id} = useParams()
@@ -102,6 +103,7 @@ const Details = () => {
                                 Contact
                             </span>
                         </Link>
+                        <BurgerMenu/>
                     </ul>
                 </nav>
 
